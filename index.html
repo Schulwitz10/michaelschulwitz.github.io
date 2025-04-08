@@ -16,6 +16,7 @@
       padding: 0;
       background: linear-gradient(to bottom, #fefbd8, #d6eaf8);
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -24,6 +25,12 @@
       text-align: center;
       padding: 2rem 1rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     h1 {
@@ -37,19 +44,25 @@
       margin: auto;
     }
 
-    .book {
+    .book, .printables {
       text-align: center;
       margin-bottom: 3rem;
+      animation: popUp 1s ease-in;
     }
 
-    img {
+    @keyframes popUp {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    img.book-cover, img.avatar {
       max-width: 250px;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
     }
 
-    img:hover {
+    img.book-cover:hover {
       transform: scale(1.05);
     }
 
@@ -83,6 +96,12 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
@@ -97,14 +116,14 @@
     <h2>📘 My Books</h2>
 
     <div class="book">
-      <img src="rocco-cover.jpg" alt="Rocco's Spooky Adventure Cover">
+      <img class="book-cover" src="rocco-cover.jpg" alt="Rocco's Spooky Adventure Cover">
       <h3>Rocco’s Spooky Adventure</h3>
       <p>A brave little raccoon gets lost in the woods and discovers that fear can lead to friendship and courage.</p>
       <a href="https://www.amazon.com/dp/B0D7SN7BTL" class="button" target="_blank">Buy on Amazon</a>
     </div>
 
     <div class="book">
-      <img src="cover-birdie.jpg" alt="Birdie Birdie in the Sky Cover">
+      <img class="book-cover" src="cover-birdie.jpg" alt="Birdie Birdie in the Sky Cover">
       <h3>Birdie Birdie in the Sky</h3>
       <p>A silly, fun rhyming story featuring a joyful girl and a plump yellow bird on a whimsical sky-high adventure!</p>
       <a href="#" class="button" target="_blank">Coming Soon</a>
@@ -113,12 +132,25 @@
 
   <section class="about">
     <h2>👨‍💻 Meet the Author</h2>
+    <img class="avatar" src="michael-avatar.png" alt="Cartoon avatar of Michael Schulwitz Jr.">
     <p>Michael Schulwitz Jr. is a passionate children’s storyteller and dad of four. His books are inspired by his own
       children’s curiosity and laughter. He hopes to help kids explore bravery, kindness, and creativity through fun
       and colorful adventures.</p>
   </section>
+
+  <section class="printables">
+    <h2>🖍️ Free Printables</h2>
+    <p>Download fun activity pages featuring Rocco and Birdie!</p>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 1rem;">
+        <a class="button" href="printables/rocco-coloring-page.pdf" target="_blank">🎨 Rocco Coloring Page</a>
+      </li>
+      <li>
+        <a class="button" href="printables/birdie-wordsearch-nicer.png" target="_blank">🔍 Birdie Word Search</a>
+      </li>
+    </ul>
+  </section>
 </body>
 
 </html>
-
 

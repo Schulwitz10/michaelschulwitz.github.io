@@ -1,108 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Printables – Coloring Pages</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #fefefe;
-      padding: 2rem;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      color: #6c63ff;
-    }
-
-    .printables-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .printable {
-      width: 250px;
-      text-align: center;
-    }
-
-    .printable img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
-      background-color: #6c63ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .button:hover {
-      background-color: #5549cc;
-    }
-
-    .back-link {
-      display: block;
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .back-link a {
-      color: #6c63ff;
-      text-decoration: none;
-    }
-
-    .back-link a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Coloring Pages</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<body>
-  <h1>🖍 Free Coloring Pages</h1>
+    <header>
+        <h1>🖍️ Free Coloring Pages</h1>
+        <p>Download and enjoy coloring with Rocco and Birdie!</p>
+    </header>
 
-  <div class="printables-container">
-    <!-- Rocco Coloring Page -->
-    <div class="printable">
-      <img src="coloring-pages/rocco-coloring-page-preview.png" alt="Rocco Coloring Page Preview">
-      <a href="coloring-pages/rocco-coloring-page.pdf" class="button" download>Download Rocco PDF</a>
+    <div class="printables-container">
+
+        <!-- Rocco Coloring Page Section -->
+        <div class="printable">
+            <h2>Rocco's Spooky Adventure Coloring Page</h2>
+            <img src="rocco-coloring-page-preview.png" alt="Rocco Coloring Page Preview" class="preview-img">
+            <a href="rocco-coloring-page.pdf" class="button" download>Download Rocco PDF</a>
+        </div>
+
+        <!-- Birdie Coloring Page Section -->
+        <div class="printable">
+            <h2>Birdie Birdie in the Sky Coloring Page</h2>
+            <img src="birdie-coloring-page-preview.png" alt="Birdie Coloring Page Preview" class="preview-img">
+            <a href="birdie-coloring-page.pdf" class="button" download>Download Birdie PDF</a>
+        </div>
+
+        <!-- Birdie JPG Coloring Page Section -->
+        <div class="printable">
+            <h2>Birdie Birdie Coloring JPG</h2>
+            <img src="birdie-birdie-coloring.jpg" alt="Birdie Coloring Page JPG" class="preview-img">
+            <a href="birdie-birdie-coloring.jpg" class="button" download>Download Birdie JPG</a>
+        </div>
+
     </div>
 
-    <!-- Birdie Coloring Page -->
-    <div class="printable">
-      <img src="coloring-pages/birdie-birdie-coloring.jpg" alt="Birdie Coloring Page Preview">
-      <a href="coloring-pages/birdie-birdie-coloring.jpg" class="button" download>Download Birdie JPG</a>
+    <div class="back-link">
+        <a href="index.html">Back to Home</a>
     </div>
 
-    <!-- Birdie Coloring PDF -->
-    <div class="printable">
-      <img src="coloring-pages/birdie-coloring-page-preview.png" alt="Birdie Coloring PDF Preview">
-      <a href="coloring-pages/birdie-coloring-page.pdf" class="button" download>Download Birdie PDF</a>
-    </div>
-  </div>
-
-  <div class="back-link">
-    <a href="index.html">Back to Home</a>
-  </div>
 </body>
-
-</div>
-
-<div class="back-link">
-    <a href="index.html">Back to Home</a>
-</div>
+</html>
 
 

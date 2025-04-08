@@ -1,86 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coloring Pages | Michael Schulwitz Jr.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Printables – Coloring Pages</title>
   <style>
     body {
-      font-family: 'Comic Neue', cursive;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #fff9e6, #d4f1f9);
+      background: #fefefe;
+      padding: 2rem;
       color: #333;
-      text-align: center;
-    }
-
-    header {
-      background-color: #f7c59f;
-      color: #4b2e83;
-      padding: 2rem 1rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      text-align: center;
+      color: #6c63ff;
     }
 
-    .content {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
+    .printables-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .coloring-page {
-      margin-bottom: 2rem;
+    .printable {
+      width: 250px;
+      text-align: center;
     }
 
-    .coloring-page img {
-      max-width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .printable img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
     .button {
       display: inline-block;
-      margin-top: 0.5rem;
-      background-color: #2e86c1;
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #6c63ff;
       color: white;
-      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
       text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
+      font-weight: bold;
     }
 
     .button:hover {
-      background-color: #1f618d;
-      transform: scale(1.05);
+      background-color: #5549cc;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🖍️ Coloring Pages</h1>
-    <p>Fun printable adventures with Rocco and Birdie!</p>
-  </header>
 
-  <div class="content">
-    <div class="coloring-page">
-      <h2>Color Rocco!</h2>
-      <img src="printables/rocco-coloring-page-preview.png" alt="Rocco coloring preview">
-      <br>
-      <a class="button" href="printables/rocco-coloring-page.pdf" target="_blank">Download Rocco PDF</a>
+  <h1>🖍️ Free Coloring Pages</h1>
+
+  <div class="printables-container">
+    <div class="printable">
+      <img src="rocco-coloring-page-preview.png" alt="Rocco Coloring Page Preview">
+      <a href="rocco-coloring-page.pdf" class="button" download>Download Rocco</a>
     </div>
-
-    <div class="coloring-page">
-      <h2>Color Birdie!</h2>
-      <img src="printables/birdie-coloring-page-preview.png" alt="Birdie coloring preview">
-      <br>
-      <a class="button" href="printables/birdie-coloring-page.pdf" target="_blank">Download Birdie PDF</a>
+    <div class="printable">
+      <img src="birdie-coloring-page-preview.png" alt="Birdie Coloring Page Preview">
+      <a href="birdie-coloring-page.pdf" class="button" download>Download Birdie</a>
     </div>
   </div>
+
+  <div class="back-link">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
 </body>
 </html>
 

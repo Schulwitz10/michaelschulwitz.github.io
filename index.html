@@ -1,100 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michael Schulwitz Jr. | Children's Author</title>
+
+  <!-- Fun Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
-      background: #fefefe;
+      background: linear-gradient(to bottom, #fefbd8, #d6eaf8);
       color: #333;
     }
+
     header {
-      background: #6ec3d5;
-      color: white;
-      padding: 2rem;
+      background-color: #f7c59f;
+      color: #4b2e83;
       text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
     section {
       padding: 2rem;
       max-width: 800px;
       margin: auto;
     }
+
     .book {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 2rem;
-    }
-    .book img {
-      max-width: 200px;
-      margin-bottom: 1rem;
-    }
-    .book h3 {
-      margin: 0.5rem 0;
-    }
-    footer {
       text-align: center;
-      padding: 1rem;
-      background: #eee;
-      font-size: 0.9rem;
+      margin-bottom: 3rem;
     }
+
+    img {
+      max-width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #2e86c1;
+    }
+
     .button {
-      background-color: #6ec3d5;
-      border: none;
+      background-color: #2e86c1;
       color: white;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
-      border-radius: 0.25rem;
+      text-decoration: none;
       display: inline-block;
-      margin-top: 0.5rem;
-      width: fit-content;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #1f618d;
+      transform: scale(1.05);
+    }
+
+    .about {
+      background-color: #ffffffcc;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Michael Schulwitz Jr.</h1>
-    <p>Children's Author & Storyteller</p>
+    <h1>📚 Michael Schulwitz Jr. – Children’s Author</h1>
+    <p>Adventurous. Heartfelt. Imaginative.</p>
   </header>
 
   <section>
-    <h2>Welcome!</h2>
-    <p>I'm Michael, a proud dad of four, passionate about writing heartfelt and adventurous children's books. I believe in telling stories that help kids find courage, joy, and imagination — one page at a time.</p>
-  </section>
-
-  <section>
-    <h2>My Books</h2>
+    <h2>📘 My Books</h2>
 
     <div class="book">
-      <img src="rocco-cover.jpg" alt="Rocco’s Spooky Adventure Cover" style="max-width: 250px; display: block; margin: 0 auto; border-radius: 10px;">
-      <h3>Rocco's Spooky Adventure</h3>
+      <img src="rocco-cover.jpg" alt="Rocco's Spooky Adventure Cover">
+      <h3>Rocco’s Spooky Adventure</h3>
       <p>A brave little raccoon gets lost in the woods and discovers that fear can lead to friendship and courage.</p>
       <a href="https://www.amazon.com/dp/B0D7SN7BTL" class="button" target="_blank">Buy on Amazon</a>
     </div>
 
     <div class="book">
-  <img src="cover-birdie.jpg" alt="Birdie Birdie in the Sky Cover" style="max-width: 250px; display: block; margin: 0 auto; border-radius: 10px;">
-
-  <h3>Birdie Birdie in the Sky</h3>
-  <p>A silly, fun rhyming story featuring a joyful girl and a plump yellow bird on a whimsical sky-high adventure!</p>
-  <a href="#" class="button" target="_blank">Coming Soon</a>
-</div>
-
+      <img src="cover-birdie.jpg" alt="Birdie Birdie in the Sky Cover">
+      <h3>Birdie Birdie in the Sky</h3>
+      <p>A silly, fun rhyming story featuring a joyful girl and a plump yellow bird on a whimsical sky-high adventure!</p>
+      <a href="#" class="button" target="_blank">Coming Soon</a>
+    </div>
   </section>
 
-  <section>
-    <h2>Connect</h2>
-    <p>Want to collaborate, ask a question, or book a reading? Reach out via email: <strong>your.email@example.com</strong></p>
+  <section class="about">
+    <h2>👨‍💻 Meet the Author</h2>
+    <p>Michael Schulwitz Jr. is a passionate children’s storyteller and dad of four. His books are inspired by his own
+      children’s curiosity and laughter. He hopes to help kids explore bravery, kindness, and creativity through fun
+      and colorful adventures.</p>
   </section>
-
-  <footer>
-    &copy; 2025 Michael Schulwitz Jr. | All Rights Reserved
-  </footer>
 </body>
+
 </html>
+
 

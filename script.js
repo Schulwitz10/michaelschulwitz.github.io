@@ -1,20 +1,17 @@
-// Image pieces for the puzzle
-const imageUrl = 'rocco-cover.jpg'; // Your image file
-
-// Create puzzle pieces and shuffle them
 const puzzleContainer = document.getElementById('puzzle');
+const imageUrl = 'rocco-cover.jpg'; // Path to your image file
 let pieces = [];
 
 function createPuzzle() {
-  let pieceId = 1;
+  let pieceId = 0;
 
-  // Loop to create 9 puzzle pieces (3x3)
+  // Create 9 pieces (3x3 puzzle)
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 3; col++) {
       const piece = document.createElement('div');
       piece.classList.add('piece');
       piece.style.backgroundImage = `url(${imageUrl})`;
-      piece.style.backgroundPosition = `-${col * 200}px -${row * 200}px`;
+      piece.style.backgroundPosition = `-${col * 100}px -${row * 100}px`; // Adjust size for the puzzle pieces
       piece.style.gridColumn = col + 1;
       piece.style.gridRow = row + 1;
       piece.setAttribute('data-id', pieceId);
@@ -28,20 +25,19 @@ function createPuzzle() {
       pieceId++;
     }
   }
-  
-  // Add pieces to puzzle container
+
+  // Append pieces to puzzle container
   pieces.forEach(piece => puzzleContainer.appendChild(piece));
 }
 
-// Shuffle the pieces
+// Shuffle puzzle pieces
 document.getElementById('shuffle').addEventListener('click', shufflePuzzle);
 
 function shufflePuzzle() {
   let shuffledPieces = [...pieces];
-  
-  shuffledPieces.sort(() => Math.random() - 0.5); // Shuffle the pieces randomly
+  shuffledPieces.sort(() => Math.random() - 0.5); // Randomly shuffle the pieces
 
-  // Reorder pieces in the puzzle container
+  // Rearrange the shuffled pieces in the container
   shuffledPieces.forEach(piece => puzzleContainer.appendChild(piece));
 }
 
@@ -51,12 +47,12 @@ let draggedPiece = null;
 function dragStart(e) {
   draggedPiece = this;
   setTimeout(() => {
-    this.style.visibility = 'hidden';
+    this.style.visibility = 'hidden'; // Hide the dragged piece
   }, 0);
 }
 
 function dragOver(e) {
-  e.preventDefault();
+  e.preventDefault(); // Allow drop
 }
 
 function drop(e) {
@@ -67,7 +63,7 @@ function drop(e) {
     const draggedIndex = pieces.findIndex(piece => piece.getAttribute('data-id') === draggedId);
     const targetIndex = pieces.findIndex(piece => piece.getAttribute('data-id') === targetId);
 
-    // Swap positions
+    // Swap pieces positions
     [pieces[draggedIndex], pieces[targetIndex]] = [pieces[targetIndex], pieces[draggedIndex]];
     [draggedPiece.style.gridColumn, this.style.gridColumn] = [this.style.gridColumn, draggedPiece.style.gridColumn];
     [draggedPiece.style.gridRow, this.style.gridRow] = [this.style.gridRow, draggedPiece.style.gridRow];
@@ -75,10 +71,9 @@ function drop(e) {
 }
 
 function dragEnd() {
-  draggedPiece.style.visibility = 'visible';
+  draggedPiece.style.visibility = 'visible'; // Restore visibility
   draggedPiece = null;
 }
 
 // Initialize the puzzle
 createPuzzle();
-

@@ -20,12 +20,53 @@
     }
 
     header {
-      background-color: #f7c59f;
-      color: #4b2e83;
-      text-align: center;
-      padding: 2rem 1rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      animation: fadeInDown 1s ease-out;
+    background: linear-gradient(135deg, #F0C6A0, #F6D7B9); /* Gradient background */
+    color: #6A4E94;  /* Adjusted text color */
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid #FF5733;
+    transition: all 0.3s ease-in-out;
+    animation: fadeInDown 1s ease-out; /* Animation effect */
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0.5rem 0;
+    color: #2F4F4F;
+    transition: all 0.3s ease;
+}
+
+header p {
+    font-size: 1.3rem;
+    color: #666;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #FF5733;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #F6D7B9;
+    transform: scale(1.1);
+}
+
+header:hover h1 {
+    color: #FF5733;
+}
+
+@keyframes fadeInDown {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
     }
 
     @keyframes fadeInDown {

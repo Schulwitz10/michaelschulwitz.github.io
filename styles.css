@@ -1,59 +1,70 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
-.container {
-  margin: 50px auto;
-  width: 80%;
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
 h1 {
-  font-size: 3rem;
-  color: #2d2d2d;
+    font-size: 3rem;
+    margin: 0;
 }
 
-.puzzle {
-  display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(3, 200px);
-  gap: 10px;
-  margin: 20px auto;
+.printables-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
 }
 
-.piece {
-  width: 200px;
-  height: 200px;
-  background-size: 600px 600px; /* Scale the background to fit the image into the grid */
-  cursor: pointer;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.printable {
+    margin: 10px;
+    text-align: center;
 }
 
-.piece:hover {
-  transform: scale(1.1);
+.image-preview {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-top: 20px;
-  background-color: #ff7f50;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: inline-block;
+    margin-top: 10px;
 }
 
-button:hover {
-  background-color: #ff6347;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+.button:hover {
+    background-color: #45a049;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.back-link a:hover {
+    color: #4CAF50;
 }
 
 

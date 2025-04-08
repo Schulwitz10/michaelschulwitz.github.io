@@ -27,7 +27,7 @@ h1 {
 .piece {
   width: 200px;
   height: 200px;
-  background-size: cover;
+  background-size: 600px 600px; /* Scale the background to fit the image into the grid */
   cursor: pointer;
   border: 2px solid #ccc;
   border-radius: 8px;
@@ -55,4 +55,5 @@ button:hover {
   background-color: #ff6347;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
+
 

@@ -2,93 +2,111 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Me - Michael Schulwitz Jr.</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    header {
-      text-align: center;
-      background-color: #4CAF50;
-      color: white;
-      padding: 2rem;
-    }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #5f9ea0;
+            color: white;
+        }
 
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        h1 {
+            font-size: 36px;
+        }
 
-    .contact-form label {
-      font-size: 1rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+        p {
+            font-size: 18px;
+        }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-    .contact-form button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+        label {
+            font-size: 18px;
+            margin: 10px 0;
+        }
 
-    .contact-form button:hover {
-      background-color: #45a049;
-    }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
 
-    .contact-form p {
-      font-size: 1rem;
-      text-align: center;
-    }
-  </style>
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #5f9ea0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4c8b7a;
+        }
+
+        .success-message {
+            text-align: center;
+            font-size: 18px;
+            color: green;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            text-align: center;
+            font-size: 18px;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <h1>Contact Me</h1>
+        <p>Have a question or want to connect? Send me a message below!</p>
+    </header>
 
-  <header>
-    <h1>Contact Me</h1>
-    <p>If you have a question or would like to connect, feel free to send me a message below!</p>
-  </header>
-
-  <div class="contact-form">
     <form action="https://formspree.io/f/xqapgvzj" method="POST">
-      <label for="name">Your Name:</label>
-      <input type="text" name="name" id="name" required>
+        <label for="name">Your Name:</label>
+        <input type="text" name="name" id="name" required>
 
-      <label for="email">Your Email:</label>
-      <input type="email" name="email" id="email" required>
+        <label for="email">Your Email:</label>
+        <input type="email" name="email" id="email" required>
 
-      <label for="message">Your Message:</label>
-      <textarea name="message" id="message" required></textarea>
+        <label for="message">Your Message:</label>
+        <textarea name="message" id="message" required></textarea>
 
-      <button type="submit">Send Message</button>
+        <button type="submit">Send Message</button>
     </form>
-  </div>
 
 </body>
 
 </html>
+
 

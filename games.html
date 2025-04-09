@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocco's Golf Escape</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #1a1a2e;
+      color: white;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: url('https://i.imgur.com/D4dKzDj.jpg') no-repeat center center;
+      background-size: cover;
+      border: 3px solid limegreen;
+    }
+    #message {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Rocco’s Golf Escape – Aim & Click to Shoot!</div>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const hole = { x: 700, y: 500, radius: 20 };
+    const ball = { x: 100, y: 300, radius: 10, dx: 0, dy: 0 };
+
+    let isAiming = false;
+    let aimX = 0, aimY = 0;
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00000077";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function drawHole() {
+      ctx.beginPath();
+      ctx.arc(hole.x, hole.y, hole.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "lime";
+      ctx.fill();
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+
+    function drawAimLine() {
+      if (isAiming) {
+        ctx.beginPath();
+        ctx.moveTo(ball.x, ball.y);
+        ctx.lineTo(aimX, aimY);
+        ctx.strokeStyle = "yellow";
+        ctx.stroke();
+      }
+    }
+
+    function updateBall() {
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+      ball.dx *= 0.98;
+      ball.dy *= 0.98;
+      if (Math.abs(ball.dx) < 0.1) ball.dx = 0;
+      if (Math.abs(ball.dy) < 0.1) ball.dy = 0;
+    }
+
+    function checkHole() {
+      const dx = ball.x - hole.x;
+      const dy = ball.y - hole.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < hole.radius + ball.radius) {
+        document.getElementById("message").innerText = "🎉 You escaped the spooky hole!";
+        ball.dx = 0;
+        ball.dy = 0;
+      }
+    }
+
+    function gameLoop() {
+      drawBackground();
+      drawHole();
+      drawBall();
+      drawAimLine();
+      updateBall();
+      checkHole();
+      requestAnimationFrame(gameLoop);
+    }
+
+    canvas.addEventListener("mousedown", (e) => {
+      isAiming = true;
+      aimX = e.offsetX;
+      aimY = e.offsetY;
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+      if (isAiming) {
+        aimX = e.offsetX;
+        aimY = e.offsetY;
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      if (isAiming) {
+        ball.dx = (ball.x - aimX) * 0.1;
+        ball.dy = (ball.y - aimY) * 0.1;
+        isAiming = false;
+      }
+    });
+
+    gameLoop();
+  </script>
+</body>
+</html>
 

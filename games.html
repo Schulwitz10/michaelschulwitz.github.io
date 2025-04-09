@@ -175,19 +175,27 @@
             border-radius: 10px;
         }
 
-        .download-button {
-            background-color: #ff5733;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            margin-top: 20px;
+        canvas {
+            border: 2px solid #2e86c1;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
-        .download-button:hover {
+        .tools {
+            margin-top: 20px;
+        }
+
+        .color-button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #ff5733;
+            color: white;
+            border: none;
+        }
+
+        .color-button:hover {
             background-color: #f6d7b9;
         }
 
@@ -202,14 +210,86 @@
 <body>
     <h1>Coloring Fun with Pirate Raccoon!</h1>
     <div class="coloring-game-container">
-        <img class="game-image" src="pirate-raccoon.png" alt="Pirate Raccoon Coloring Page">
-        <br>
-        <a href="pirate-raccoon.png" class="download-button" download>Download Pirate Raccoon Coloring Page</a>
+        <canvas id="coloringCanvas" width="500" height="600"></canvas>
+    </div>
+
+    <div class="tools">
+        <button class="color-button" id="colorRed">Red</button>
+        <button class="color-button" id="colorBlue">Blue</button>
+        <button class="color-button" id="colorGreen">Green</button>
+        <button class="color-button" id="colorYellow">Yellow</button>
+        <button class="color-button" id="clearCanvas">Clear</button>
     </div>
 
     <footer>
         <p>Enjoy the coloring page and stay tuned for more fun activities!</p>
     </footer>
+
+    <script>
+        // Set up the canvas and get the 2d context
+        const canvas = document.getElementById('coloringCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Create an image to draw
+        const pirateImage = new Image();
+        pirateImage.src = 'pirate-raccoon.png'; // Use your image path
+
+        // Draw the image when it's loaded
+        pirateImage.onload = function() {
+            ctx.drawImage(pirateImage, 0, 0, canvas.width, canvas.height);
+        };
+
+        // Variables for drawing
+        let isDrawing = false;
+        let currentColor = 'black';
+
+        // Mouse events for drawing
+        canvas.addEventListener('mousedown', function(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', function(e) {
+            if (isDrawing) {
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', function() {
+            isDrawing = false;
+        });
+
+        canvas.addEventListener('mouseout', function() {
+            isDrawing = false;
+        });
+
+        // Color selection buttons
+        document.getElementById('colorRed').addEventListener('click', function() {
+            currentColor = 'red';
+        });
+
+        document.getElementById('colorBlue').addEventListener('click', function() {
+            currentColor = 'blue';
+        });
+
+        document.getElementById('colorGreen').addEventListener('click', function() {
+            currentColor = 'green';
+        });
+
+        document.getElementById('colorYellow').addEventListener('click', function() {
+            currentColor = 'yellow';
+        });
+
+        // Clear canvas button
+        document.getElementById('clearCanvas').addEventListener('click', function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(pirateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+        });
+    </script>
 </body>
 </html>
-

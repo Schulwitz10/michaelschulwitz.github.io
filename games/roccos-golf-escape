@@ -1,1 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocco's Golf Escape</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      background: url('https://i.imgur.com/BmQQB0x.jpg') no-repeat center center;
+      background-size: cover;
+      border: 3px solid limegreen;
+    }
+    #message {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      font-family: 'Comic Sans MS', cursive;
+      z-index: 10;
+    }
+    #soundBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 11;
+      background: limegreen;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">🎯 Level 1: Foggy Forest – Sink the shot to escape!</div>
+  <button id="soundBtn">🔊 Sound On</button>
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
+
+  <audio id="bgm" loop>
+    <source src="https://freesound.org/data/previews/459/459111_838627-lq.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="hitSound">
+    <source src="https://freesound.org/data/previews/341/341695_6266194-lq.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="winSound">
+    <source src="https://freesound.org/data/previews/514/514763_10226524-lq.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const raccoonImg = new Image();
+    raccoonImg.src = "https://i.imgur.com/wZyYlBB.png";
+
+    const bgm = document.getElementById("bgm");
+    const hitSound = document.getElementById("hitSound");
+    const winSound = document.getElementById("winSound");
+    const soundBtn = document.getElementById("soundBtn");
+
+    let soundOn = true;
+    soundBtn.addEventListener("click", () => {
+      soundOn = !soundOn;
+      soundBtn.innerText = soundOn ? "🔊 Sound On" : "🔇 Sound Off";
+      if (soundOn) bgm.play();
+      else bgm.pause();
+    });
+
+    const hole = { x: 800, y: 500, radius: 25 };
+    const ball = { x: 120, y: 400, radius: 10, dx: 0, dy: 0 };
+    let isAiming = false;
+    let aimX = 0, aimY = 0;
+    let levelComplete = false;
+
+    let ghostX = 500, ghostY = 200, ghostDX = 1.5;
+    let level = 1;
+    let strokes = 0;
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function drawHole() {
+      ctx.beginPath();
+      ctx.arc(hole.x, hole.y, hole.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "lime";
+      ctx.shadowColor = "lime";
+      ctx.shadowBlur = 20;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+
+    function drawRaccoon() {
+      ctx.drawImage(raccoonImg, 50, 330, 100, 100);
+    }
+
+    function drawGhost() {
+      ctx.beginPath();
+      ctx.arc(ghostX, ghostY, 25, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ghostX - 8, ghostY - 5, 5, 0, Math.PI * 2);
+      ctx.arc(ghostX + 8, ghostY - 5, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+    }
+
+    function drawAimLine() {
+      if (isAiming && !levelComplete) {
+        ctx.beginPath();
+        ctx.moveTo(ball.x, ball.y);
+        ctx.lineTo(aimX, aimY);
+        ctx.strokeStyle = "yellow";
+        ctx.stroke();
+      }
+    }
+
+    function updateBall() {
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+      ball.dx *= 0.98;
+      ball.dy *= 0.98;
+      if (Math.abs(ball.dx) < 0.1) ball.dx = 0;
+      if (Math.abs(ball.dy) < 0.1) ball.dy = 0;
+    }
+
+    function moveGhost() {
+      ghostX += ghostDX;
+      if (ghostX > 800 || ghostX < 400) ghostDX *= -1;
+    }
+
+    function checkHole() {
+      const dx = ball.x - hole.x;
+      const dy = ball.y - hole.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < hole.radius + ball.radius && !levelComplete) {
+        levelComplete = true;
+        document.getElementById("message").innerText = `🎉 You escaped Level ${level} in ${strokes} strokes! Click to start Level ${level + 1}`;
+        if (soundOn) winSound.play();
+        canvas.addEventListener("click", nextLevel);
+      }
+    }
+
+    function nextLevel() {
+      level++;
+      strokes = 0;
+      levelComplete = false;
+      ball.x = 120;
+      ball.y = 400;
+      ball.dx = 0;
+      ball.dy = 0;
+      hole.x = 100 + Math.random() * 700;
+      hole.y = 100 + Math.random() * 400;
+      document.getElementById("message").innerText = `🎯 Level ${level}: Haunted Hollow – Sink the shot to escape!`;
+      canvas.removeEventListener("click", nextLevel);
+    }
+
+    function gameLoop() {
+      drawBackground();
+      drawHole();
+      drawBall();
+      drawRaccoon();
+      drawGhost();
+      drawAimLine();
+      updateBall();
+      moveGhost();
+      checkHole();
+      requestAnimationFrame(gameLoop);
+    }
+
+    canvas.addEventListener("mousedown", (e) => {
+      if (!levelComplete) {
+        isAiming = true;
+        aimX = e.offsetX;
+        aimY = e.offsetY;
+      }
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+      if (isAiming) {
+        aimX = e.offsetX;
+        aimY = e.offsetY;
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      if (isAiming) {
+        ball.dx = (ball.x - aimX) * 0.1;
+        ball.dy = (ball.y - aimY) * 0.1;
+        strokes++;
+        if (soundOn) hitSound.play();
+        isAiming = false;
+      }
+    });
+
+    raccoonImg.onload = () => {
+      if (soundOn) bgm.play();
+      gameLoop();
+    };
+  </script>
+</body>
+</html>
 

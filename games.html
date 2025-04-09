@@ -2,50 +2,167 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Games | Michael Schulwitz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocco's Golf Escape</title>
   <style>
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background: #1a1a2e;
-      color: white;
+    html, body {
       margin: 0;
       padding: 0;
-      text-align: center;
+      overflow: hidden;
+      background: #000;
     }
-    header {
-      background: #111;
-      padding: 1em;
-      font-size: 1.5em;
-      color: limegreen;
-    }
-    .game-container {
-      margin: 20px auto;
-      max-width: 850px;
-      padding: 20px;
-      background: #222;
-      border-radius: 15px;
-      box-shadow: 0 0 15px limegreen;
-    }
-    iframe {
+    canvas {
+      display: block;
+      margin: auto;
+      background: url('https://i.imgur.com/BmQQB0x.jpg') no-repeat center center;
+      background-size: cover;
       border: 3px solid limegreen;
+    }
+    #message {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 10px 20px;
       border-radius: 10px;
+      font-size: 1.2em;
+      font-family: 'Comic Sans MS', cursive;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <header>
-    🕹️ Play Michael’s Games
-  </header>
+  <div id="message">🎯 Aim & Shoot to Escape the Haunted Course!</div>
+  <canvas id="gameCanvas" width="900" height="600"></canvas>
 
-  <div class="game-container">
-    <h2>👻 Rocco’s Golf Escape</h2>
-    <p>A spooky-fun golf adventure with your favorite raccoon! Click and drag to aim your golf ball and escape the haunted course.</p>
-    <iframe src="/games/roccos-golf-escape/" width="800" height="650" allowfullscreen></iframe>
-  </div>
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
 
-  <!-- Add more games below if you want -->
+    const raccoonImg = new Image();
+    raccoonImg.src = "https://i.imgur.com/wZyYlBB.png"; // cartoony raccoon
+
+    const hole = { x: 800, y: 500, radius: 25 };
+    const ball = { x: 120, y: 400, radius: 10, dx: 0, dy: 0 };
+    let isAiming = false;
+    let aimX = 0, aimY = 0;
+
+    let ghostX = 500, ghostY = 200, ghostDX = 1.5;
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function drawHole() {
+      ctx.beginPath();
+      ctx.arc(hole.x, hole.y, hole.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "lime";
+      ctx.shadowColor = "lime";
+      ctx.shadowBlur = 20;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+
+    function drawRaccoon() {
+      ctx.drawImage(raccoonImg, 50, 330, 100, 100);
+    }
+
+    function drawGhost() {
+      ctx.beginPath();
+      ctx.arc(ghostX, ghostY, 25, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ghostX - 8, ghostY - 5, 5, 0, Math.PI * 2);
+      ctx.arc(ghostX + 8, ghostY - 5, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+    }
+
+    function drawAimLine() {
+      if (isAiming) {
+        ctx.beginPath();
+        ctx.moveTo(ball.x, ball.y);
+        ctx.lineTo(aimX, aimY);
+        ctx.strokeStyle = "yellow";
+        ctx.stroke();
+      }
+    }
+
+    function updateBall() {
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+      ball.dx *= 0.98;
+      ball.dy *= 0.98;
+      if (Math.abs(ball.dx) < 0.1) ball.dx = 0;
+      if (Math.abs(ball.dy) < 0.1) ball.dy = 0;
+    }
+
+    function moveGhost() {
+      ghostX += ghostDX;
+      if (ghostX > 800 || ghostX < 400) ghostDX *= -1;
+    }
+
+    function checkHole() {
+      const dx = ball.x - hole.x;
+      const dy = ball.y - hole.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < hole.radius + ball.radius) {
+        document.getElementById("message").innerText = "🎉 You escaped the spooky hole!";
+        ball.dx = 0;
+        ball.dy = 0;
+      }
+    }
+
+    function gameLoop() {
+      drawBackground();
+      drawHole();
+      drawBall();
+      drawRaccoon();
+      drawGhost();
+      drawAimLine();
+      updateBall();
+      moveGhost();
+      checkHole();
+      requestAnimationFrame(gameLoop);
+    }
+
+    canvas.addEventListener("mousedown", (e) => {
+      isAiming = true;
+      aimX = e.offsetX;
+      aimY = e.offsetY;
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+      if (isAiming) {
+        aimX = e.offsetX;
+        aimY = e.offsetY;
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      if (isAiming) {
+        ball.dx = (ball.x - aimX) * 0.1;
+        ball.dy = (ball.y - aimY) * 0.1;
+        isAiming = false;
+      }
+    });
+
+    raccoonImg.onload = () => {
+      gameLoop();
+    };
+  </script>
 </body>
 </html>
+
 
 

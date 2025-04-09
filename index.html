@@ -10,65 +10,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
 
   <style>
+    /* Background and general layout */
     body {
       font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #fefbd8, #d6eaf8);
+      background: #d0d0d0; /* Light gray background */
       color: #333;
       overflow-x: hidden;
     }
 
+    /* Header styling */
     header {
-    background: linear-gradient(135deg, #F0C6A0, #F6D7B9); /* Gradient background */
-    color: #6A4E94;  /* Adjusted text color */
-    padding: 2rem;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    border-bottom: 3px solid #FF5733;
-    transition: all 0.3s ease-in-out;
-    animation: fadeInDown 1s ease-out; /* Animation effect */
-}
-
-header h1 {
-    font-size: 3rem;
-    margin: 0.5rem 0;
-    color: #2F4F4F;
-    transition: all 0.3s ease;
-}
-
-header p {
-    font-size: 1.3rem;
-    color: #666;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #FF5733;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background-color: #F6D7B9;
-    transform: scale(1.1);
-}
-
-header:hover h1 {
-    color: #FF5733;
-}
-
-@keyframes fadeInDown {
-    0% { transform: translateY(-50px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
+      background: #2e2e2e; /* Dark gray background */
+      color: #A4E10A; /* Lime green text */
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      border-bottom: 3px solid #FF5733;
+      transition: all 0.3s ease-in-out;
+      animation: fadeInDown 1s ease-out;
     }
 
+    header h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+      color: #A4E10A;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    /* Button styling */
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #A4E10A;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #76c724;
+      transform: scale(1.1);
+    }
+
+    /* Animation for header */
     @keyframes fadeInDown {
       0% { transform: translateY(-50px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
@@ -79,6 +71,7 @@ header:hover h1 {
       margin: 0;
     }
 
+    /* Section layout */
     section {
       padding: 2rem;
       max-width: 800px;
@@ -91,11 +84,13 @@ header:hover h1 {
       animation: popUp 1s ease-in;
     }
 
+    /* Animation for book and printables */
     @keyframes popUp {
       0% { transform: scale(0.8); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
 
+    /* Book cover styling */
     img.book-cover, img.avatar {
       max-width: 250px;
       border-radius: 12px;
@@ -112,6 +107,7 @@ header:hover h1 {
       color: #2e86c1;
     }
 
+    /* Button styling for links */
     .button {
       background-color: #2e86c1;
       color: white;
@@ -131,6 +127,7 @@ header:hover h1 {
       transform: scale(1.05);
     }
 
+    /* About section styling */
     .about {
       background-color: #ffffffcc;
       padding: 1.5rem;
@@ -140,6 +137,7 @@ header:hover h1 {
       animation: fadeInUp 1s ease-in-out;
     }
 
+    /* Fade-in animation for About section */
     @keyframes fadeInUp {
       0% { transform: translateY(50px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
@@ -149,12 +147,12 @@ header:hover h1 {
 
 <body>
   <header>
-    <h1>Michael Schulwitz Jr. – Children’s Author</h1>
+    <h1>📚 Michael Schulwitz Jr. – Children’s Author</h1>
     <p>Adventurous. Heartfelt. Imaginative.</p>
   </header>
 
   <section>
-    <h2> My Books</h2>
+    <h2>📘 My Books</h2>
 
     <div class="book">
       <img class="book-cover" src="rocco-cover.jpg" alt="Rocco's Spooky Adventure Cover">
@@ -178,37 +176,30 @@ header:hover h1 {
       children’s curiosity and laughter. He hopes to help kids explore bravery, kindness, and creativity through fun
       and colorful adventures.</p>
     <a class="button" href="contact.html">📩 Contact Me</a>
-
   </section>
 
   <section class="printables">
-  <section class="printables">
-  <h2>🖍️ Free Printables</h2>
-  <p>Click below to explore all Rocco and Birdie coloring fun!</p>
-  <a class="button" href="coloring.html">🎨 Visit the Coloring Pages</a>
-</section>
-    
+    <h2>🖍️ Free Printables</h2>
+    <p>Click below to explore all Rocco and Birdie coloring fun!</p>
+    <a class="button" href="coloring.html">🎨 Visit the Coloring Pages</a>
+  </section>
 
-
-   <!-- Section for Email Sign Up -->
-<section>
+  <!-- Section for Email Sign Up -->
+  <section>
     <h2>Subscribe to Our Newsletter</h2>
     <p>Sign up to receive updates about new books and more fun content!</p>
     <form action="https://formspree.io/f/xdkeproy" method="POST">
-        <label for="name">Your Name:</label>
-        <input type="text" name="name" id="name" required>
+      <label for="name">Your Name:</label>
+      <input type="text" name="name" id="name" required>
 
-        <label for="email">Your Email:</label>
-        <input type="email" name="email" id="email" required>
+      <label for="email">Your Email:</label>
+      <input type="email" name="email" id="email" required>
 
-        <button type="submit" class="button">Subscribe</button>
+      <button type="submit" class="button">Subscribe</button>
     </form>
-</section>
-
-</section>
-
-
+  </section>
 </body>
 
 </html>
+
 

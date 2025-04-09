@@ -20,6 +20,41 @@
       overflow-x: hidden;
     }
 
+    /* Navigation Bar styling */
+    nav {
+      background-color: #2e2e2e; /* Dark gray background */
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #A4E10A; /* Lime green color */
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #76c724; /* Lime green hover */
+      text-decoration: underline;
+    }
+
     /* Header styling */
     header {
       background: #2e2e2e; /* Dark gray background */
@@ -30,6 +65,7 @@
       border-bottom: 3px solid #FF5733;
       transition: all 0.3s ease-in-out;
       animation: fadeInDown 1s ease-out;
+      margin-top: 60px; /* Adjusted for fixed nav */
     }
 
     header h1 {
@@ -43,19 +79,22 @@
       color: #fff;
     }
 
-    /* Button styling */
-    button {
-      padding: 10px 20px;
-      font-size: 1.2rem;
+    /* Free printables button style */
+    .free-printables-button {
+      display: inline-block;
       background-color: #A4E10A;
       color: white;
+      padding: 1rem 2rem;
       border: none;
       border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 20px auto;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    button:hover {
+    .free-printables-button:hover {
       background-color: #76c724;
       transform: scale(1.1);
     }
@@ -146,12 +185,26 @@
 </head>
 
 <body>
-  <header>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#printables">Printables</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
     <h1>📚 Michael Schulwitz Jr. – Children’s Author</h1>
     <p>Adventurous. Heartfelt. Imaginative.</p>
   </header>
 
-  <section>
+  <!-- Free Printables Button -->
+  <a href="coloring.html" class="free-printables-button">🎨 Visit the Coloring Pages</a>
+
+  <section id="books">
     <h2>📘 My Books</h2>
 
     <div class="book">
@@ -169,23 +222,23 @@
     </div>
   </section>
 
-  <section class="about">
+  <section id="about" class="about">
     <h2>👨‍💻 Meet the Author</h2>
     <img class="avatar" src="michael-avatar.png" alt="Cartoon avatar of Michael Schulwitz Jr.">
     <p>Michael Schulwitz Jr. is a passionate children’s storyteller and dad of four. His books are inspired by his own
       children’s curiosity and laughter. He hopes to help kids explore bravery, kindness, and creativity through fun
       and colorful adventures.</p>
-    <a class="button" href="contact.html">📩 Contact Me</a>
+    <a class="button" href="contact.html" id="contact">📩 Contact Me</a>
   </section>
 
-  <section class="printables">
+  <section id="printables" class="printables">
     <h2>🖍️ Free Printables</h2>
     <p>Click below to explore all Rocco and Birdie coloring fun!</p>
     <a class="button" href="coloring.html">🎨 Visit the Coloring Pages</a>
   </section>
 
   <!-- Section for Email Sign Up -->
-  <section>
+  <section id="contact">
     <h2>Subscribe to Our Newsletter</h2>
     <p>Sign up to receive updates about new books and more fun content!</p>
     <form action="https://formspree.io/f/xdkeproy" method="POST">
@@ -198,8 +251,8 @@
       <button type="submit" class="button">Subscribe</button>
     </form>
   </section>
+
 </body>
 
 </html>
-
 

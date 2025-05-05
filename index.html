@@ -1,82 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michael Schulwitz Jr. | Children's Author</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+
+  <!-- Fun Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+
   <style>
+    /* Background and general layout */
     body {
       font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
-      background: #d0d0d0;
+      background: #d0d0d0; /* Light gray background */
       color: #333;
       overflow-x: hidden;
     }
+
+    /* Navigation Bar styling */
     nav {
-      background-color: #2e2e2e;
+      background-color: #2e2e2e; /* Dark gray background */
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       padding: 1rem;
     }
+
     nav ul {
       list-style: none;
-      text-align: center;
-      padding: 0;
       margin: 0;
+      padding: 0;
+      text-align: center;
     }
+
     nav ul li {
       display: inline;
       margin: 0 20px;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #A4E10A;
+      color: #A4E10A; /* Lime green color */
       font-size: 1.2rem;
+      transition: all 0.3s ease;
     }
+
     nav ul li a:hover {
-      color: #76c724;
+      color: #76c724; /* Lime green hover */
       text-decoration: underline;
     }
+
+    /* Header styling */
     header {
-      background: #2e2e2e;
-      color: #A4E10A;
+      background: #2e2e2e; /* Dark gray background */
+      color: #A4E10A; /* Lime green text */
       padding: 2rem;
       text-align: center;
-      margin-top: 60px;
+      font-family: 'Poppins', sans-serif;
+      border-bottom: 3px solid #FF5733;
+      transition: all 0.3s ease-in-out;
+      animation: fadeInDown 1s ease-out;
+      margin-top: 60px; /* Adjusted for fixed nav */
     }
+
     header h1 {
       font-size: 3rem;
       margin: 0.5rem 0;
+      color: #A4E10A;
     }
+
     header p {
       font-size: 1.3rem;
       color: #fff;
     }
+
+    /* Free printables button style */
+    .free-printables-button {
+      display: inline-block;
+      background-color: #A4E10A;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 20px auto;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .free-printables-button:hover {
+      background-color: #76c724;
+      transform: scale(1.1);
+    }
+
+    /* Animation for header */
+    @keyframes fadeInDown {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    /* Section layout */
     section {
       padding: 2rem;
       max-width: 800px;
       margin: auto;
-      text-align: center;
     }
+
+    .book, .printables {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: popUp 1s ease-in;
+    }
+
+    /* Animation for book and printables */
+    @keyframes popUp {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Book cover styling */
+    img.book-cover, img.avatar {
+      max-width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    img.book-cover:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #2e86c1;
+    }
+
+    /* Button styling for links */
     .button {
       background-color: #2e86c1;
       color: white;
       padding: 0.6rem 1.2rem;
+      border: none;
       border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
       text-decoration: none;
-      margin-top: 1rem;
       display: inline-block;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
+
     .button:hover {
       background-color: #1f618d;
+      transform: scale(1.05);
+    }
+
+    /* About section styling */
+    .about {
+      background-color: #ffffffcc;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    /* Fade-in animation for About section */
+    @keyframes fadeInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
+
 <body>
+  <!-- Navigation Bar -->
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
@@ -84,8 +193,8 @@
       <li><a href="#about">About Me</a></li>
       <li><a href="#printables">Printables</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#etsy">Etsy Store</a></li>
-      <li><a href="#facebook">Facebook</a></li>
+    
+
     </ul>
   </nav>
 
@@ -94,37 +203,90 @@
     <p>Adventurous. Heartfelt. Imaginative.</p>
   </header>
 
+  <!-- Free Printables Button -->
+  <a href="coloring.html" class="free-printables-button">🎨 Visit the Coloring Pages</a>
+
   <section id="books">
     <h2>📘 My Books</h2>
-    <p>Explore all available stories!</p>
+
+    <div class="book">
+      <img class="book-cover" src="rocco-cover.jpg" alt="Rocco's Spooky Adventure Cover">
+      <h3>Rocco’s Spooky Adventure</h3>
+      <p>A brave little raccoon gets lost in the woods and discovers that fear can lead to friendship and courage.</p>
+      <a href="https://www.amazon.com/dp/B0D7SN7BTL" class="button" target="_blank">Buy on Amazon</a>
+    </div>
+
+<div class="book">
+  <img class="book-cover" src="cover-birdie.jpg" alt="Birdie Birdie in the Sky Cover">
+  <h3>Birdie Birdie in the Sky</h3>
+  <p>A silly, fun rhyming story featuring a joyful girl and a plump yellow bird on a whimsical sky-high adventure!</p>
+  <a href="https://www.barnesandnoble.com/w/birdie-birdie-in-the-sky-michael-dwight-schulwitz/1147297250?ean=9798349259777" class="button" target="_blank">Buy on Barnes & Noble</a>
+</div>
+
   </section>
 
-  <section id="about">
-    <h2>👨‍💻 About Me</h2>
-    <p>Michael Schulwitz Jr. is a passionate children’s storyteller and dad of four.</p>
+  <section id="about" class="about">
+    <h2>👨‍💻 Meet the Author</h2>
+    <img class="avatar" src="michael-avatar.png" alt="Cartoon avatar of Michael Schulwitz Jr.">
+    <p>Michael Schulwitz Jr. is a passionate children’s storyteller and dad of four. His books are inspired by his own
+      children’s curiosity and laughter. He hopes to help kids explore bravery, kindness, and creativity through fun
+      and colorful adventures.</p>
+    <a class="button" href="contact.html" id="contact">📩 Contact Me</a>
   </section>
 
-  <section id="printables">
+  <!-- Facebook Button -->
+<a href="https://www.facebook.com/profile.php?id=61576012108925" target="_blank" class="facebook-button">
+  📘 Follow Me on Facebook
+</a>
+
+<style>
+  .facebook-button {
+    display: inline-block;
+    background-color: #4267B2;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .facebook-button:hover {
+    background-color: #365899;
+    transform: scale(1.05);
+  }
+</style>
+
+
+  <section id="printables" class="printables">
     <h2>🖍️ Free Printables</h2>
-    <p>Download fun coloring pages and more!</p>
-  </section>
-
-  <section id="contact">
-    <h2>📩 Contact Me</h2>
-    <p>Reach out to connect or collaborate.</p>
+    <p>Click below to explore all Rocco and Birdie coloring fun!</p>
+    <a class="button" href="coloring.html">🎨 Visit the Coloring Pages</a>
   </section>
 
   <section id="etsy" class="printables">
-    <h2>🛍️ Visit My Etsy Store</h2>
-    <p>Find fun bookmarks, stickers, pencil cases, and more — perfect for young readers!</p>
-    <a class="button" href="https://www.etsy.com/shop/MightyMikeTales?ref=dashboard-header" target="_blank">🛒 Shop on Etsy</a>
+  <h2>🛍️ Visit My Etsy Store</h2>
+  <p>Find fun bookmarks, stickers, pencil cases, and more — perfect for young readers!</p>
+  <a class="button" href="https://www.etsy.com/shop/MightyMikeTales?ref=dashboard-header" target="_blank">🛒 Shop on Etsy</a>
+</section>
+
+
+  <!-- Section for Email Sign Up -->
+  <section id="contact">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Sign up to receive updates about new books and more fun content!</p>
+    <form action="https://formspree.io/f/xdkeproy" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" name="email" id="email" required>
+
+      <button type="submit" class="button">Subscribe</button>
+    </form>
   </section>
 
-  <section id="facebook" class="printables">
-    <h2>📘 Follow Me on Facebook</h2>
-    <p>Get updates, behind-the-scenes, and connect with other fans of Might Mike Tales!</p>
-    <a class="button" href="https://www.facebook.com/profile.php?id=61576012108925" target="_blank">👍 Visit Facebook Page</a>
-  </section>
 </body>
-</html>
 
+</html>
